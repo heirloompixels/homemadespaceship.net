@@ -1,0 +1,35 @@
+---
+layout: base 
+title: Everything New is Old Again. 
+description: Various shades of living described by making. 
+---
+
+<section id="blog">
+{% for post in paginator.posts %}
+
+   <!-- here add you post markup -->
+<article> 
+<header>
+<h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+  <span class="date">{{post.date | date: "%d %B %Y"}}</span>
+</header>
+  <div class="content">
+   {{ post.content }}
+</div>
+<footer>
+</footer>
+</article>
+{% endfor %}
+
+<!-- Pagination links -->
+<div class="pagination">
+{% if paginator.previous_page %}
+<a href="/page{{paginator.previous_page}}" class="previous">Previous &laquo;&laquo</a>
+{% endif %}
+<span class="page_number ">Page: {{paginator.page}} of {{paginator.total_pages}}</span>
+{% if paginator.next_page %}
+<a href="/page{{paginator.next_page}}" class="next ">&raquo;&raquo;Next</a>
+{% endif %}
+</div>
+
+</section>
